@@ -30,3 +30,16 @@
 
 (defn quicksort [xs]
   (sort-parts (list xs)))
+
+; from Rosetta Code
+; http://rosettacode.org/wiki/Longest_Common_Subsequence#Clojure
+(defn- longest [xs ys]
+  (if (> (count xs) (count ys)) xs ys))
+
+(def lcs
+  (memoize
+   (fn [[x & xs] [y & ys]]
+     (cond
+      (or (nil? x) (nil? y)) nil
+      (= x y) (cons x (lcs xs ys))
+      :else (longest (lcs (cons x xs) ys) (lcs xs (cons y ys)))))))
