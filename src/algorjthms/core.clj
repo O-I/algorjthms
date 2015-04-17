@@ -43,3 +43,11 @@
       (or (nil? x) (nil? y)) nil
       (= x y) (cons x (lcs xs ys))
       :else (longest (lcs (cons x xs) ys) (lcs xs (cons y ys)))))))
+
+(defn hamming
+  "Returns the number of positions in which corresponding
+   elements are different in two equal length seqs. If they
+   are of unequal length, nil is returned."
+   [seq1 seq2]
+   (when (= (count seq1) (count seq2))
+     (count (remove (fn [[x y]] (= x y)) (partition 2 (interleave seq1 seq2))))))
