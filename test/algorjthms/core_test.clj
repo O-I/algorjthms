@@ -20,3 +20,10 @@
     (is (nil? (lcs "rook" "queen")))
     (is (= '(2 3 4) (lcs '(1 2 3 4) '(2 3 4 5))))
     (is (= '(\c \o \o \n) (lcs "comonadic" "raccoon")))))
+
+(deftest hamming-test
+  (testing "hamming"
+    (is (= 2  (hamming "1011101" "1001001")))
+    (is (= 3  (hamming "2173896" "2233796")))
+    (is (nil? (hamming [1 2 3] [1 2 3 4])))
+    (is (nil? (hamming [1 2 3 4] [1 2 3])))))
