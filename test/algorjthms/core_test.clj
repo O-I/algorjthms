@@ -27,3 +27,10 @@
     (is (= 3  (hamming "2173896" "2233796")))
     (is (nil? (hamming [1 2 3] [1 2 3 4])))
     (is (nil? (hamming [1 2 3 4] [1 2 3])))))
+
+(deftest damerau-levenshtein-test
+  (testing "damerau-levenshtein"
+    (is (= 1   (damerau-levenshtein "clojure" "closure")))
+    (is (= 2   (damerau-levenshtein "line" "lein")))
+    (is (= 3   (damerau-levenshtein "sitting" "kitten")))
+    (is (zero? (damerau-levenshtein "f00b*rZ" "f00b*rZ")))))

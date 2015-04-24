@@ -72,7 +72,7 @@
             [(inc x)]
             (range 1 (inc t-len)))))
 
-(defn damerau–levenshtein
+(defn damerau-levenshtein
   "Returns the Damerau–Levenshtein distance between two strings."
   [s t]
   (let [s-len (count s)
