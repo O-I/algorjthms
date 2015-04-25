@@ -86,3 +86,17 @@
                        [[] first-row]
                        (range s-len))]
     (peek (peek matrix))))
+
+(defn binary-search
+  "Searches a sorted collection between optional lower and upper
+   indices (default is entire collection) for a target element.
+   Returns the index of the element if found, otherwise returns nil."
+  ([haystack needle]
+    (binary-search haystack needle 0 (dec (count haystack))))
+  ([haystack needle lower upper]
+    (if (> lower upper) nil
+      (let [middle (quot (+ lower upper) 2) mth (nth haystack middle)]
+        (cond
+          (> mth needle) (recur haystack needle lower (dec middle))
+          (< mth needle) (recur haystack needle (inc middle) upper)
+          (= mth needle) middle)))))
