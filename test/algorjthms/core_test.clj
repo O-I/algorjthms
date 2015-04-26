@@ -34,3 +34,13 @@
     (is (= 2   (damerau-levenshtein "line" "lein")))
     (is (= 3   (damerau-levenshtein "sitting" "kitten")))
     (is (zero? (damerau-levenshtein "f00b*rZ" "f00b*rZ")))))
+
+(deftest binary-search-test
+  (testing "binary-search"
+    (let [coll [1 3 4 6 8 9 11]]
+      (is (= 3  (binary-search coll 6)))
+      (is (= 5  (binary-search coll 9)))
+      (is (nil? (binary-search coll 7)))
+      (is (= 4  (binary-search coll 8 1 5)))
+      (is (nil? (binary-search coll 8 5 6)))
+      (is (nil? (binary-search coll 8 5 1))))))
