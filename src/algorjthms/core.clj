@@ -100,3 +100,14 @@
           (> mth needle) (recur haystack needle lower (dec middle))
           (< mth needle) (recur haystack needle (inc middle) upper)
           (= mth needle) middle)))))
+
+; Y combinator
+(defn Y [f]
+  (#(% %) #(f (fn [& args] (apply (% %) args)))))
+
+; explicit, longform Y combinator implementation for reference
+; (defn Y [f]
+;   ((fn [x] (x x))
+;    (fn [x]
+;      (f (fn [& args]
+;           (apply (x x) args))))))
