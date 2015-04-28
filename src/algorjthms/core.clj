@@ -111,3 +111,8 @@
 ;    (fn [x]
 ;      (f (fn [& args]
 ;           (apply (x x) args))))))
+
+(defn gcd
+  "Returns the greatest common divisor of two integers."
+  [a b]
+  (if (zero? b) a (recur b (mod a b))))
