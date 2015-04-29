@@ -44,3 +44,11 @@
       (is (= 4  (binary-search coll 8 1 5)))
       (is (nil? (binary-search coll 8 5 6)))
       (is (nil? (binary-search coll 8 5 1))))))
+
+(deftest gcd-test
+  (testing "gcd"
+    (is (= 9973 (gcd 49865 69811)))
+    (is (= 21   (gcd 1071 1029)))
+    (is (= 11   (gcd 11 0)))
+    (is (= 11   (gcd 0 11)))
+    (is (= 1    (gcd 32416190071 541)))))
