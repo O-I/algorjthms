@@ -52,3 +52,7 @@
     (is (= 11   (gcd 11 0)))
     (is (= 11   (gcd 0 11)))
     (is (= 1    (gcd 32416190071 541)))))
+
+(deftest merge-sort-test
+  (testing "merge-sort"
+    (is (= (range 100) (-> 100 range shuffle quicksort)))))
