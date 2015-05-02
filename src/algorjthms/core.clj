@@ -1,4 +1,5 @@
-(ns algorjthms.core)
+(ns algorjthms.core
+  (:require [clojure.math.numeric-tower :as math]))
 
 ; Slight modification of Jean Niklas L'Orange's implementation
 ; https://groups.google.com/forum/#!topic/clojure/J-L3BUTaJ3E/discussion
@@ -131,3 +132,20 @@
       L
       (let [[left right] (split-at (/ (count L) 2) L)]
         (merge* (merge-sort left) (merge-sort right))))))
+
+; from the clojure.math.numeric-tower README example
+; https://github.com/clojure/math.numeric-tower#example-usage
+(defn- sqr
+  "Uses the numeric tower expt to square a number"
+  [x]
+  (math/expt x 2))
+
+(defn euclidean-squared-distance
+  "Computes the Euclidean squared distance between two sequences"
+  [a b]
+  (reduce + (map (comp sqr -) a b)))
+
+(defn euclidean-distance
+  "Computes the Euclidean distance between two sequences"
+  [a b]
+  (math/sqrt (euclidean-squared-distance a b)))
