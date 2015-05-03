@@ -56,3 +56,12 @@
 (deftest merge-sort-test
   (testing "merge-sort"
     (is (= (range 100) (-> 100 range shuffle quicksort)))))
+
+(deftest euclidean-distance-test
+  (testing "euclidean-distance"
+   (is (= 5
+          (euclidean-distance [2 -1] [-2 2])))
+   (is (= 5.0990195135927845
+          (euclidean-distance [2 3 6] [5 4 10])))
+   (is (= 9.643650760992955
+          (euclidean-distance [1 2 3 5 8 13 21] [0 2 4 6 8 10 12])))))
