@@ -65,3 +65,9 @@
           (euclidean-distance [2 3 6] [5 4 10])))
    (is (= 9.643650760992955
           (euclidean-distance [1 2 3 5 8 13 21] [0 2 4 6 8 10 12])))))
+
+(deftest manhattan-distance-test
+  (testing "manhattan-distance"
+    (is (= 0 (manhattan-distance [0 0] [0 0])))
+    (is (= 4 (manhattan-distance [1 2] [3 0])))
+    (is (= 6 (manhattan-distance [0 0] [3 3])))))
