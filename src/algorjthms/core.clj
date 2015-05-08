@@ -163,3 +163,8 @@
     (if (zero? e) x
       (if (even? e) (recur (m* b b) (/ e 2) x)
         (recur (m* b b) (quot e 2) (m* b x))))))
+
+(defn lcm
+  "Returns the least common multiple of two integers."
+  [a b]
+  (/ (* a b) (gcd a b)))
