@@ -168,3 +168,11 @@
   "Returns the least common multiple of two integers."
   [a b]
   (/ (* a b) (gcd a b)))
+
+(defn extended-gcd
+  "Extended Euclidean algorithm"
+  [a b]
+  (if (zero? b) [1 0]
+    (let [[q r] [(quot a b) (rem a b)]
+          [s t] (extended-gcd b r)]
+      [t (- s (* q t))])))
