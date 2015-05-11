@@ -84,3 +84,9 @@
     (is (= 36 (lcm 12 18)))
     (is (= 42 (lcm 14 -6)))
     (is (= 0  (lcm 0  35)))))
+
+(deftest extended-gcd-test
+  (testing "extended-gcd"
+    (is (= [-9  47] (extended-gcd  120  23)))
+    (is (= [-3   5] (extended-gcd   65  40)))
+    (is (= [-16 27] (extended-gcd 1239 735)))))
