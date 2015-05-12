@@ -176,3 +176,12 @@
     (let [[q r] [(quot a b) (rem a b)]
           [s t] (extended-gcd b r)]
       [t (- s (* q t))])))
+
+(defn modular-inverse
+  "Calculates x such that a * x = 1 mod m.
+   If a and m are not coprime, raises an error."
+   [a m]
+   (let [[x y] (extended-gcd a m)]
+     (if (= y 1)
+       (mod x m)
+       (throw (Exception. (str "=> " a " and " m " are not coprime."))))))
