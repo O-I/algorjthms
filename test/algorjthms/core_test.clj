@@ -90,3 +90,8 @@
     (is (= [-9  47] (extended-gcd  120  23)))
     (is (= [-3   5] (extended-gcd   65  40)))
     (is (= [-16 27] (extended-gcd 1239 735)))))
+
+(deftest modular-inverse-test
+  (testing "modular-inverse"
+    (is (= 1969 (modular-inverse 42  2017)))
+    (is (thrown? Exception (modular-inverse 15 60)))))
