@@ -185,3 +185,8 @@
      (if (= y 1)
        (mod x m)
        (throw (Exception. (str "=> " a " and " m " are not coprime."))))))
+
+(defn roots
+  "Finds the roots of a function given a range, step, and tolerance."
+  [f start stop step eps]
+  (filter #(-> (f %) Math/abs (< eps)) (range start stop step)))
