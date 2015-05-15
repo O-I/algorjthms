@@ -95,3 +95,8 @@
   (testing "modular-inverse"
     (is (= 1969 (modular-inverse 42  2017)))
     (is (thrown? Exception (modular-inverse 15 60)))))
+
+(deftest roots-test
+  (testing "roots"
+    (is (= '(-9.381755897326649E-14 0.9999999999998124 1.9999999999997022)
+           (roots #(+ (* % % %) (* -3 % %) (* 2 %)) -1.0 3.0 0.0001 0.00000001)))))
