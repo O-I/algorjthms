@@ -190,3 +190,11 @@
   "Finds the roots of a function given a range, step, and tolerance."
   [f start stop step eps]
   (filter #(-> (f %) Math/abs (< eps)) (range start stop step)))
+
+(defn neighbors
+  "Returns all adjacent elements to a given index in a 2D matrix."
+  ([size yx] (neighbors [[-1 0] [1 0] [0 -1] [0 1]] size yx))
+  ([deltas size yx]
+    (filter (fn [new-yx]
+              (every? #(< -1 % size) new-yx))
+            (map #(map + yx %) deltas))))
