@@ -198,3 +198,22 @@
     (filter (fn [new-yx]
               (every? #(< -1 % size) new-yx))
             (map #(map + yx %) deltas))))
+
+(defn estimate-cost
+  "A straight-line h function to estimate remaining path cost."
+  [step-cost-est size y x]
+  (* step-cost-est
+     (- (+ size size) y x 2)))
+
+(defn path-cost
+  "A g function that calculates the cost of a path so far."
+  [node-cost cheapest-nbr]
+  (+ node-cost
+     (:cost cheapest-nbr 0)))
+
+(defn total-cost
+  "An f function that sums the cost of a path so far g
+   with the estimated remaining cost of that path h."
+  [new-cost step-cost-est size y x]
+  (+ new-cost
+     (estimate-cost step-cost-est size y x)))
