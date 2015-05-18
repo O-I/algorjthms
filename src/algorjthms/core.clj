@@ -217,3 +217,9 @@
   [new-cost step-cost-est size y x]
   (+ new-cost
      (estimate-cost step-cost-est size y x)))
+
+(defn min-by [f coll]
+  (when (seq coll)
+    (reduce (fn [min this]
+              (if (> (f min) (f this)) this min))
+             coll)))
