@@ -223,3 +223,34 @@
     (reduce (fn [min this]
               (if (> (f min) (f this)) this min))
              coll)))
+
+; from The Joy of Clojure
+(defn A* [start-yx step-est cell-costs]
+  (let [size (count cell-costs)]
+    (loop [steps 0
+           routes (vec (replicate size (vec (replicate size nil))))
+           work-todo (sorted-set [0 start-yx])]
+      (if (empty? work-todo)
+        [(peek (peek routes)) :steps steps]
+        (let [[_ yx :as work-item] (first work-todo)
+               rest-work-todo (disj work-todo work-item)
+               nbr-yxs (neighbors size yx)
+               cheapest-nbr (min-by :cost
+                                    (keep #(get-in routes %)
+                                          nbr-yxs))
+                      new-cost (path-cost (get-in cell-costs yx)
+                                         cheapest-nbr)
+                      old-cost (:cost (get-in routes yx))]
+          (if (and old-cost (>= new-cost old-cost))
+             (recur (inc steps) routes rest-work-todo)
+             (recur (inc steps)
+             (assoc-in routes yx
+                       {:cost new-cost
+                        :yxs (conj (:yxs cheapest-nbr [])
+                                   yx)})
+             (into rest-work-todo
+                   (map
+                     (fn [w]
+                       (let [[y x] w]
+                         [(total-cost new-cost step-est size y x) w]))
+                     nbr-yxs)))))))))
