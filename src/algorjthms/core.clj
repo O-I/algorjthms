@@ -244,9 +244,9 @@
           (if (and old-cost (>= new-cost old-cost))
              (recur (inc steps) routes rest-work-todo)
              (recur (inc steps)
-             (assoc-in routes yx
-                       {:cost new-cost
-                        :yxs (conj (:yxs cheapest-nbr [])
+                    (assoc-in routes yx
+                              {:cost new-cost
+                               :yxs (conj (:yxs cheapest-nbr [])
                                    yx)})
              (into rest-work-todo
                    (map
