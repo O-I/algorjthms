@@ -100,3 +100,8 @@
   (testing "roots"
     (is (= '(-9.381755897326649E-14 0.9999999999998124 1.9999999999997022)
            (roots #(+ (* % % %) (* -3 % %) (* 2 %)) -1.0 3.0 0.0001 0.00000001)))))
+
+(deftest neighbors-test
+  (testing "neighbors"
+    (let [matrix [[1 2 3] [4 5 6] [7 8 9]]]
+      (is (= '(4 2) (map #(get-in matrix %) (neighbors 3 [0 0])))))))
