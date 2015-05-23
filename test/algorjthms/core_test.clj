@@ -105,3 +105,17 @@
   (testing "neighbors"
     (let [matrix [[1 2 3] [4 5 6] [7 8 9]]]
       (is (= '(4 2) (map #(get-in matrix %) (neighbors 3 [0 0])))))))
+
+(deftest estimate-cost-test
+  (testing "estimate-cost"
+    (is (= 7200 (estimate-cost 900 5 0 0)))
+    (is (=    0 (estimate-cost 900 5 4 4)))))
+
+(deftest path-cost-test
+  (testing "path-cost"
+    (is (= 901 (path-cost 900 {:cost 1})))))
+
+(deftest total-cost-test
+  (testing "total-cost"
+    (is (= 7200 (total-cost    0 900 5 0 0)))
+    (is (= 1900 (total-cost 1000 900 5 3 4)))))
