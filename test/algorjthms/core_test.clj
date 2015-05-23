@@ -119,3 +119,7 @@
   (testing "total-cost"
     (is (= 7200 (total-cost    0 900 5 0 0)))
     (is (= 1900 (total-cost 1000 900 5 3 4)))))
+
+(deftest min-by-test
+  (testing "min-by"
+    (is (= {:cost 9} (min-by :cost [{:cost 100} {:cost 36} {:cost 9}])))))
