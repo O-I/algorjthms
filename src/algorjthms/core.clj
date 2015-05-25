@@ -197,7 +197,7 @@
   ([deltas size yx]
     (filter (fn [new-yx]
               (every? #(< -1 % size) new-yx))
-            (map #(map + yx %) deltas))))
+            (map #(vec (map + yx %)) deltas))))
 
 (defn estimate-cost
   "A straight-line h function to estimate remaining path cost."
