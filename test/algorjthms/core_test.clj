@@ -123,3 +123,18 @@
 (deftest min-by-test
   (testing "min-by"
     (is (= {:cost 9} (min-by :cost [{:cost 100} {:cost 36} {:cost 9}])))))
+
+(deftest A*-test
+  (testing "A*"
+    (let [world [[  1   1   1   1   1]
+                 [999 999 999 999   1]
+                 [  1   1   1   1   1]
+                 [  1 999 999 999 999]
+                 [  1   1   1   1   1]]]
+      (is (= [{:cost 17,
+               :yxs [[0 0] [0 1] [0 2] [0 3] [0 4]
+                     [1 4] [2 4] [2 3] [2 2] [2 1]
+                     [2 0] [3 0] [4 0] [4 1] [4 2]
+                     [4 3] [4 4]]}
+              :steps 94]
+           (A* [0 0] 900 world))))))
