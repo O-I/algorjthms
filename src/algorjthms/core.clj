@@ -254,3 +254,17 @@
                        (let [[y x] w]
                          [(total-cost new-cost step-est size y x) w]))
                      nbr-yxs)))))))))
+
+(defn index
+  "Generates a uniform representation of an indexed collection."
+  [coll]
+  (cond
+    (map? coll) (seq coll)
+    (set? coll) (map vector coll coll)
+    :else (map vector (iterate inc 0) coll)))
+
+; from the Joy of Clojure
+(defn position
+  "Returns the positions of all elements in coll that satisfy pred."
+  [pred coll]
+  (for [[i v] (index coll) :when (pred v)] i))
