@@ -158,3 +158,9 @@
                      [1 4] [2 4] [3 4] [4 4]]}
                :steps 132]
              (A* [0 0] 900 world3))))))
+
+(deftest position-test
+  (testing "position"
+    (is (= '(5 7)   (position #{3 4} [:a 1 :b 2 :c 3 :d 4])))
+    (is (= '(:c :d) (position #{3 4} {:a 1 :b 2 :c 3 :d 4})))
+    (is (= '(0 2)   (position even? '(2 3 6 7))))))
