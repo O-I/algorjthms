@@ -164,3 +164,7 @@
     (is (= '(5 7)   (position #{3 4} [:a 1 :b 2 :c 3 :d 4])))
     (is (= '(:c :d) (position #{3 4} {:a 1 :b 2 :c 3 :d 4})))
     (is (= '(0 2)   (position even? '(2 3 6 7))))))
+
+(deftest horner-test
+  (testing "horner"
+    (is (= 128 (horner [-19 7 -4 6] 3)))))

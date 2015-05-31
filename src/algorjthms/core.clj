@@ -269,8 +269,8 @@
   [pred coll]
   (for [[i v] (index coll) :when (pred v)] i))
 
-(def horner
+(defn horner
   "Given a polynomial represented as a list of its coefficients in
   ascending order, computes its value at a point using Horner's rule."
   [coeffs x]
-  (reduce #(-> %1 (* x) (+ %2)) (reverse coeffs))))
+  (reduce #(-> %1 (* x) (+ %2)) (reverse coeffs)))
