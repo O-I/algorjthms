@@ -168,3 +168,8 @@
 (deftest horner-test
   (testing "horner"
     (is (= 128 (horner [-19 7 -4 6] 3)))))
+
+(deftest aks?-test
+  (testing "aks?"
+    (is (= '(2 3 5 7 11 13 17 19 23 29 31 37 41 43 47)
+           (filter aks? (range 2 50))))))
