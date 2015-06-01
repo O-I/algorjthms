@@ -274,3 +274,19 @@
   ascending order, computes its value at a point using Horner's rule."
   [coeffs x]
   (reduce #(-> %1 (* x) (+ %2)) (reverse coeffs)))
+
+; from Rosetta Code
+; http://rosettacode.org/wiki/AKS_test_for_primes#Clojure
+(defn- coeff
+  "kth coefficient of (x - 1)^n"
+  [n k]
+  (/ (apply *' (range n (- n k) -1))
+     (apply *' (range k 0 -1))
+     (if (and (even? k) (< k n)) -1 1)))
+
+(defn- coeffs
+  "coefficient series for (x - 1)^n, k=[0..n]"
+  [n]
+  (map #(coeff n %) (range (inc n))))
+
+(defn aks? [p] (->> (coeffs p) rest butlast (every? #(-> % (mod p) zero?))))
