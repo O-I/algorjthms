@@ -290,3 +290,10 @@
   (map #(coeff n %) (range (inc n))))
 
 (defn aks? [p] (->> (coeffs p) rest butlast (every? #(-> % (mod p) zero?))))
+
+(defn digit-count
+  "Returns the number of digits in an integer."
+  [z]
+  (if (zero? z)
+      1
+      (count (take-while pos? (iterate #(quot % 10) (Math/abs z))))))
