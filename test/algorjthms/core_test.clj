@@ -173,3 +173,9 @@
   (testing "aks?"
     (is (= '(2 3 5 7 11 13 17 19 23 29 31 37 41 43 47)
            (filter aks? (range 2 50))))))
+
+(deftest digit-count-test
+  (testing "digit-count"
+    (is (= 1 (digit-count 0)))
+    (is (= 3 (digit-count -123)))
+    (is (= 5 (digit-count 24159)))))
