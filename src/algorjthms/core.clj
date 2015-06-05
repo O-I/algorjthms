@@ -297,3 +297,9 @@
   (if (zero? z)
       1
       (count (take-while pos? (iterate #(quot % 10) (Math/abs z))))))
+
+(defn choose
+  "Calculates the binomial coefficient n choose k"
+  [n k]
+  (let [rprod (fn [a b] (reduce * (range a (inc b))))]
+    (/ (rprod (- n k -1) n) (rprod 1 k))))
