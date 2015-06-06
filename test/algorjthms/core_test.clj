@@ -179,3 +179,8 @@
     (is (= 1 (digit-count 0)))
     (is (= 3 (digit-count -123)))
     (is (= 5 (digit-count 24159)))))
+
+(deftest choose-test
+  (testing "chooose"
+    (is (= '(1 5 10 10 5 1)
+           (map (fn [[n k]] (choose n k)) (for [i (range 6)] [5 i]))))))
