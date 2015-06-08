@@ -184,3 +184,8 @@
   (testing "chooose"
     (is (= '(1 5 10 10 5 1)
            (map (fn [[n k]] (choose n k)) (for [i (range 6)] [5 i]))))))
+
+(deftest lempel-ziv-welch-test
+  (testing "lempel-ziv-welch"
+    (is (= '(84 79 66 69 79 82 78 79 84 256 258 260 265 259 261 263)
+           (lempel-ziv-welch "TOBEORNOTTOBEORTOBEORNOT")))))
