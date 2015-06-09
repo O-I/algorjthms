@@ -323,3 +323,10 @@
             (recur (rest t) r wc dict s)
             (recur (rest t) (cons (get dict w) r) (list c) (assoc dict wc s) (inc s))))
         (reverse (if w (cons (get dict w) r) r))))))
+
+(defn std-dev [samples]
+  (let [n (count samples)
+  mean (/ (reduce + samples) n)
+  intermediate (map #(Math/pow (- %1 mean) 2) samples)]
+    (Math/sqrt
+     (/ (reduce + intermediate) n))))
