@@ -327,8 +327,11 @@
 (defn mean [samples]
   (/ (reduce + samples) (count samples)))
 
-(defn std-dev [samples]
+(defn variance [samples]
   (let [n (count samples)
         mean (mean samples)
         intermediate (map #(Math/pow (- %1 mean) 2) samples)]
-    (Math/sqrt (/ (reduce + intermediate) n))))
+    (/ (reduce + intermediate) n)))
+
+(defn std-dev [samples]
+  (-> samples variance Math/sqrt))
