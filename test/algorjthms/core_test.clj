@@ -190,6 +190,14 @@
     (is (= '(84 79 66 69 79 82 78 79 84 256 258 260 265 259 261 263)
            (lempel-ziv-welch "TOBEORNOTTOBEORTOBEORNOT")))))
 
+(deftest mean-test
+  (testing "mean"
+    (is (= 5 (mean [2 4 4 4 5 5 7 9])))))
+
+(deftest variance-test
+  (testing "variance"
+    (is (= 4.0 (variance [2 4 4 4 5 5 7 9])))))
+
 (deftest std-dev-test
   (testing "std-dev"
     (is (= 2.0 (std-dev [2 4 4 4 5 5 7 9])))))
