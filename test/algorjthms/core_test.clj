@@ -196,8 +196,8 @@
 
 (deftest variance-test
   (testing "variance"
-    (is (= 4.0 (variance [2 4 4 4 5 5 7 9])))))
+    (is (= 4 (variance [2 4 4 4 5 5 7 9])))))
 
 (deftest std-dev-test
   (testing "std-dev"
-    (is (= 2.0 (std-dev [2 4 4 4 5 5 7 9])))))
+    (is (= 2 (std-dev [2 4 4 4 5 5 7 9])))))
