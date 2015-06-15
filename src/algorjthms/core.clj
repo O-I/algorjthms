@@ -335,3 +335,12 @@
 
 (defn std-dev [samples]
   (-> samples variance math/sqrt))
+
+(defn factorial [n]
+  (reduce *' (range 1 (inc n))))
+
+(def ! (memoize factorial))
+
+(defn catalan []
+  (map #(/ (! (*' 2 %))
+           (*' (! (inc %)) (! %))) (range)))
