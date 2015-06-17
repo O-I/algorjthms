@@ -344,3 +344,9 @@
 (defn catalan []
   (map #(/ (! (*' 2 %))
            (*' (! (inc %)) (! %))) (range)))
+
+(defn geometric-mean [samples]
+  (math/expt (reduce * samples) (-> samples count /)))
+
+(defn harmonic-mean [samples]
+  (-> (->> samples (map /)) mean /))
