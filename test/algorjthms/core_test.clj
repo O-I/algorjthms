@@ -206,3 +206,11 @@
   (testing "catalan"
     (is (= '(1 1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440)
            (take 15 (catalan))))))
+
+(deftest geometric-mean-test
+  (testing "geometric-mean"
+    (is (= 4.603215596046737 (geometric-mean [2 4 4 4 5 5 7 9])))))
+
+(deftest harmonic-mean-test
+  (testing "harmonic-mean"
+    (is (= 10080/2399 (harmonic-mean [2 4 4 4 5 5 7 9])))))
