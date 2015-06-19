@@ -153,7 +153,7 @@
 (defn manhattan-distance
   "Calculates the Manhattan distance between two points"
   [[x1 y1] [x2 y2]]
-  (+ (Math/abs ^Integer (- x2 x1)) (Math/abs ^Integer (- y2 y1))))
+  (+ (math/abs ^Integer (- x2 x1)) (math/abs ^Integer (- y2 y1))))
 
 (defn power-mod
   "Calculates modular exponentiation b^e mod m"
@@ -189,7 +189,7 @@
 (defn roots
   "Finds the roots of a function given a range, step, and tolerance."
   [f start stop step eps]
-  (filter #(-> (f %) Math/abs (< eps)) (range start stop step)))
+  (filter #(-> (f %) math/abs (< eps)) (range start stop step)))
 
 (defn neighbors
   "Returns all adjacent elements to a given index in a 2D matrix."
@@ -296,7 +296,7 @@
   [z]
   (if (zero? z)
       1
-      (count (take-while pos? (iterate #(quot % 10) (Math/abs z))))))
+      (count (take-while pos? (iterate #(quot % 10) (math/abs z))))))
 
 (defn choose
   "Calculates the binomial coefficient n choose k"
