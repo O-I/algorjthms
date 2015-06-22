@@ -217,6 +217,7 @@
 
 (deftest karatsuba-test
   (testing "karatsuba"
+    (is (=        0  (karatsuba     0  1234)))
     (is (=       12  (karatsuba     3     4)))
     (is (=  7006652  (karatsuba  5678  1234)))
     (is (= -7006652  (karatsuba -5678  1234)))
