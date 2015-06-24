@@ -367,3 +367,23 @@
             (sign (+ (* z2 (math/expt 10 (* 2 e)))
                      (* (- z1 z2 z0) (math/expt 10 e))
                      z0))))))
+
+; by Christophe Grande
+; http://clojure.roboloco.net/?p=100
+(defn prime-sieve []
+  (letfn [(enqueue [sieve n step]
+            (let [m (+ n step)]
+              (if (sieve m)
+                (recur sieve m step)
+                (assoc sieve m step))))
+          (next-sieve [sieve n]
+            (if-let [step (sieve n)]
+              (-> sieve
+                  (dissoc n)
+                  (enqueue n step))
+              (enqueue sieve n (+ n n))))
+          (next-primes [sieve n]
+            (if (sieve n)
+              (recur (next-sieve sieve n) (+ n 2))
+              (cons n (lazy-seq (next-primes (next-sieve sieve n) (+ n 2))))))]
+    (cons 2 (lazy-seq (next-primes {} 3)))))
