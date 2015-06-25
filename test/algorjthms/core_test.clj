@@ -225,3 +225,8 @@
     (is (=  7006652  (karatsuba -5678 -1234)))
     (is (= 2398052144256972738312111343740159860488704
            (karatsuba 1548564532135665645648 1548564554135665641248)))))
+
+(deftest prime-sieve-test
+  (testing "prime-sieve"
+    (is (= [2 3 5 7 11 13 17 19 23 29] (take 10 (prime-sieve))))
+    (is (= 104743 (nth (prime-sieve) 10000)))))
