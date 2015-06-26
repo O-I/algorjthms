@@ -387,3 +387,8 @@
               (recur (next-sieve sieve n) (+ n 2))
               (cons n (lazy-seq (next-primes (next-sieve sieve n) (+ n 2))))))]
     (cons 2 (lazy-seq (next-primes {} 3)))))
+
+; Efraimidis & Spirakis
+; http://utopia.duth.gr/%7Epefraimi/research/data/2007EncOfAlg.pdf
+(defn weighted-random-sample [freq]
+  (key (apply max-key #(math/expt (rand) (/ (val %))) freq)))
