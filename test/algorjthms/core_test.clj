@@ -230,3 +230,13 @@
   (testing "prime-sieve"
     (is (= [2 3 5 7 11 13 17 19 23 29] (take 10 (prime-sieve))))
     (is (= 104743 (nth (prime-sieve) 10000)))))
+
+(deftest weighted-random-sample-test
+  (testing "weighted-random-sample"
+    (let [coin {:heads 0.75 :tails 0.25}
+          tosses (frequencies
+                   (for [x (range 100000)]
+                     (weighted-random-sample coin)))
+          head-count (:heads tosses)
+          tail-count (:tails tosses)]
+      (is (< 0.02 (float (std-dev [3 (/ head-count tail-count)])))))))
