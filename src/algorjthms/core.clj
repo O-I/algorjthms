@@ -327,6 +327,13 @@
 (defn mean [samples]
   (/ (reduce + samples) (count samples)))
 
+(defn modes [coll]
+  (let [dist (frequencies coll)
+        [value freq] [first second]
+        sorted (sort-by (comp - freq) dist)
+        maxfq (freq (first sorted))]
+    (map value (take-while #(= maxfq (freq %)) sorted))))
+
 (defn variance [samples]
   (let [n (count samples)
         avg (mean samples)
