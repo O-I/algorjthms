@@ -194,6 +194,11 @@
   (testing "mean"
     (is (= 5 (mean [2 4 4 4 5 5 7 9])))))
 
+(deftest modes-test
+  (testing "modes"
+    (is (= [1]   (modes [1 2 3 4 1 5 6 7 1 2])))
+    (is (= [1 2] (modes [1 2 3 4 1 5 6 2 1 2])))))
+
 (deftest variance-test
   (testing "variance"
     (is (= 4 (variance [2 4 4 4 5 5 7 9])))))
