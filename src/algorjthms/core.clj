@@ -358,7 +358,7 @@
 (defn harmonic-mean [samples]
   (-> (->> samples (map /)) mean /))
 
-(defn karatsuba [m n]
+(defn- k* [m n]
   (let [sign (if (= (neg? m) (neg? n)) + -)
         m (math/abs m) n (math/abs n)]
     (if (or (< m 10) (< n 10))
@@ -368,12 +368,15 @@
                 b  (rem  m (math/expt 10 e))
                 c  (quot n (math/expt 10 e))
                 d  (rem  n (math/expt 10 e))
-                z0 (karatsuba b d)
-                z1 (karatsuba (+ a b) (+ c d))
-                z2 (karatsuba a c)]
+                z0 (k* b d)
+                z1 (k* (+ a b) (+ c d))
+                z2 (k* a c)]
             (sign (+ (* z2 (math/expt 10 (* 2 e)))
                      (* (- z1 z2 z0) (math/expt 10 e))
                      z0))))))
+
+(defn karatsuba [& multiplicands]
+  (reduce k* multiplicands))
 
 ; by Christophe Grande
 ; http://clojure.roboloco.net/?p=100
