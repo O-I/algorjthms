@@ -371,8 +371,8 @@
                 z0 (k* b d)
                 z1 (k* (+ a b) (+ c d))
                 z2 (k* a c)]
-            (sign (+ (* z2 (math/expt 10 (* 2 e)))
-                     (* (- z1 z2 z0) (math/expt 10 e))
+            (sign (+ (*' z2 (math/expt 10 (* 2 e)))
+                     (*' (- z1 z2 z0) (math/expt 10 e))
                      z0))))))
 
 (defn karatsuba [& multiplicands]
