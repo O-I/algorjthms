@@ -191,6 +191,11 @@
   [f start stop step eps]
   (filter #(-> (f %) math/abs (< eps)) (range start stop step)))
 
+(defn swap
+  "Swaps two elements at positions i and j in vector v"
+  [v i j]
+  (assoc v j (v i) i (v j)))
+
 (defn neighbors
   "Returns all adjacent elements to a given index in a 2D matrix."
   ([size yx] (neighbors [[-1 0] [1 0] [0 -1] [0 1]] size yx))
