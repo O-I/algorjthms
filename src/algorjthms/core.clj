@@ -196,6 +196,10 @@
   [v i j]
   (assoc v j (v i) i (v j)))
 
+(defn knuth-shuffle [vect]
+  (reduce (fn [v i] (swap v (rand-int i) i))
+          vect (range (-> vect count dec) 1 -1)))
+
 (defn neighbors
   "Returns all adjacent elements to a given index in a 2D matrix."
   ([size yx] (neighbors [[-1 0] [1 0] [0 -1] [0 1]] size yx))
