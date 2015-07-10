@@ -105,6 +105,10 @@
   (testing "swap"
     (is (= [1 2 4 3] (swap [1 2 3 4] 2 3)))))
 
+(deftest knuth-shuffle-test
+  (testing "knuth-shuffle"
+    (is (not= (-> 100 range vec) (knuth-shuffle (-> 100 range vec))))))
+
 (deftest neighbors-test
   (testing "neighbors"
     (let [matrix [[1 2 3] [4 5 6] [7 8 9]]]
