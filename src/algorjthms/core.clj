@@ -135,7 +135,7 @@
 
 ; from the clojure.math.numeric-tower README example
 ; https://github.com/clojure/math.numeric-tower#example-usage
-(defn- sqr
+(defn sqr
   "Uses the numeric tower expt to square a number"
   [x]
   (math/expt x 2))
@@ -366,6 +366,9 @@
 
 (defn harmonic-mean [samples]
   (-> (->> samples (map /)) mean /))
+
+(defn root-mean-square [samples]
+  (math/sqrt (/ (reduce + (map sqr samples)) (count samples))))
 
 (defn- k* [m n]
   (let [sign (if (= (neg? m) (neg? n)) + -)
