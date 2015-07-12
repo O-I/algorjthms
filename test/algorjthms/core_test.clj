@@ -228,6 +228,10 @@
   (testing "harmonic-mean"
     (is (= 10080/2399 (harmonic-mean [2 4 4 4 5 5 7 9])))))
 
+(deftest root-mean-square-test
+  (testing "root-mean-square"
+    (is (= 6.2048368229954285 (root-mean-square (range 1 11))))))
+
 (deftest karatsuba-test
   (testing "karatsuba"
     (is (=        0  (karatsuba     0  1234)))
