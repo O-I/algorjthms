@@ -414,3 +414,10 @@
 ; http://utopia.duth.gr/%7Epefraimi/research/data/2007EncOfAlg.pdf
 (defn weighted-random-sample [freq]
   (key (apply max-key #(math/expt (rand) (/ (val %))) freq)))
+
+(defn hash-join [table1 index1 table2 index2]
+  (let [hashed (group-by index1 table1)]
+    (flatten
+      (for [r table2]
+        (for [s (hashed (index2 r))]
+          (merge s r))))))
