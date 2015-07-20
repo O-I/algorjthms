@@ -259,3 +259,16 @@
           head-count (:heads tosses)
           tail-count (:tails tosses)]
       (is (> 0.01 (float (std-dev [3 (/ head-count tail-count)])))))))
+
+(deftest hash-join-test
+  (testing "hash-join"
+    (let [rgb '({:color "red"   :hex "ff0000"}
+                {:color "green" :hex "00ff00"}
+                {:color "blue"  :hex "0000ff"})
+          hsl '({:color "red"   :val [  0 100 50]}
+                {:color "green" :val [120 100 50]}
+                {:color "blue"  :val [240 100 50]})]
+      (is (=  '({:color "red"   :hex "ff0000" :val [  0 100 50]}
+                {:color "green" :hex "00ff00" :val [120 100 50]}
+                {:color "blue"  :hex "0000ff" :val [240 100 50]})
+              (hash-join rgb :color hsl :color))))))
