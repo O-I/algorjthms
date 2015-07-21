@@ -421,3 +421,10 @@
       (for [r table2]
         (for [s (hashed (index2 r))]
           (merge s r))))))
+
+(defn walk [node f order]
+  (when node
+   (doseq [o order]
+     (if (= o :visit)
+       (f (:val node))
+       (walk (node o) f order)))))
