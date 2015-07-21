@@ -428,3 +428,12 @@
      (if (= o :visit)
        (f (:val node))
        (walk (node o) f order)))))
+
+(defn preorder [node f]
+  (walk node f [:visit :left :right]))
+
+(defn inorder [node f]
+  (walk node f [:left :visit :right]))
+
+(defn postorder [node f]
+  (walk node f [:left :right :visit]))
