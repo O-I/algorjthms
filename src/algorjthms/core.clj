@@ -437,3 +437,16 @@
 
 (defn postorder [node f]
   (walk node f [:left :right :visit]))
+
+(defn queue [& xs]
+  (when (seq xs)
+   (apply conj clojure.lang.PersistentQueue/EMPTY xs)))
+
+(defn level-order [root f]
+  (loop [q (queue root)]
+    (when-not (empty? q)
+      (if-let [node (first q)]
+        (do
+          (f (:val node))
+          (recur (conj (pop q) (:left node) (:right node))))
+        (recur (pop q))))))
