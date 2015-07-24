@@ -450,3 +450,11 @@
           (f (:val node))
           (recur (conj (pop q) (:left node) (:right node))))
         (recur (pop q))))))
+
+(defn vec-to-tree [t]
+  (if (vector? t)
+    (let [[val left right] t]
+      {:val val
+       :left (vec-to-tree left)
+       :right (vec-to-tree right)})
+    t))
