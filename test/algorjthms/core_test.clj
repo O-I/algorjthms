@@ -272,3 +272,26 @@
                 {:color "green" :hex "00ff00" :val [120 100 50]}
                 {:color "blue"  :hex "0000ff" :val [240 100 50]})
               (hash-join rgb :color hsl :color))))))
+
+(deftest vec-to-tree-test
+  (testing "vec-to-tree"
+    (is (= {:val 1 :left
+            {:val 2 :left
+             {:val 4 :left
+              {:val 7 :left nil
+               :right nil}
+              :right nil}
+             :right
+             {:val 5 :left nil
+              :right nil}}
+            :right
+            {:val 3 :left
+             {:val 6 :left
+              {:val 8 :left nil
+               :right nil}
+              :right
+              {:val 9 :left nil
+               :right nil}}
+             :right nil}}
+          (vec-to-tree [1 [2 [4 [7]] [5]] [3 [6 [8] [9]]]])))
+    (is (= :not-a-tree (vec-to-tree :not-a-tree)))))
