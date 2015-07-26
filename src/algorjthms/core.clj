@@ -458,3 +458,6 @@
        :left (vec-to-tree left)
        :right (vec-to-tree right)})
     t))
+
+(defn fibonacci []
+  (lazy-cat [0 1] (map + fib (rest fib))))
