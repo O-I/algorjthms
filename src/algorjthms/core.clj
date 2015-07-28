@@ -459,5 +459,5 @@
        :right (vec-to-tree right)})
     t))
 
-(defn fibonacci []
-  (lazy-cat [0 1] (map + fib (rest fib))))
+(def fibonacci
+  (lazy-cat [0 1] (map + fibonacci (rest fibonacci))))
