@@ -295,3 +295,7 @@
              :right nil}}
           (vec-to-tree [1 [2 [4 [7]] [5]] [3 [6 [8] [9]]]])))
     (is (= :not-a-tree (vec-to-tree :not-a-tree)))))
+
+(deftest fibonacci-test
+  (testing "fibonacci"
+    (is (= [0 1 1 2 3 5 8 13 21 34] (take 10 fibonacci)))))
