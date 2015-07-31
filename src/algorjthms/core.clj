@@ -460,4 +460,4 @@
     t))
 
 (def fibonacci
-  (lazy-cat [0 1] (map + fibonacci (rest fibonacci))))
+  (lazy-cat [0 1] (map +' fibonacci (rest fibonacci))))
