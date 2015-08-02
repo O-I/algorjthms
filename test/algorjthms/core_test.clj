@@ -300,3 +300,10 @@
   (testing "fibonacci"
     (is (= [0 1 1 2 3 5 8 13 21 34] (take 10 fibonacci)))
     (is (=  12586269025 (nth fibonacci 50)))))
+
+(deftest luhn?-test
+  (testing "luhn?"
+    (is (= [true false false true]
+           (map #(-> % str luhn?)
+                [49927398716 49927398717
+                 1234567812345678 1234567812345670])))))
