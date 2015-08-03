@@ -463,8 +463,8 @@
   (lazy-cat [0 1] (map +' fibonacci (rest fibonacci))))
 
 (defn luhn? [cc]
-  (let [factors (flatten (repeat [1 2]))
-        numbers (map #(Character/digit % 10) (seq cc))
-        sum (reduce + (map #(int (+ (/ %1 10) (mod %1 10)))
-                        (map * (reverse numbers) factors)))]
-    (zero? (mod sum 10))))
+  (let [factors (cycle [1 2])
+        digits (map #(Character/digit % 10) (seq cc))
+        sum (reduce + (map #(+ (quot % 10) (rem % 10))
+                      (map * (reverse digits) factors)))]
+    (zero? (rem sum 10))))
