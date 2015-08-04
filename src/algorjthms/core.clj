@@ -468,3 +468,13 @@
         sum (reduce + (map #(+ (quot % 10) (rem % 10))
                       (map * (reverse digits) factors)))]
     (zero? (rem sum 10))))
+
+(defn place [piles card]
+  (let [[les gts] (->> piles (split-with #(<= (ffirst %) card)))
+        newelem (cons card (->> les last first))
+        modpile (cons newelem (first gts))]
+    (concat les (cons modpile (rest gts)))))
+
+(defn a-longest [cards]
+  (let [piles (reduce place '() cards)]
+    (->> piles last first reverse)))
