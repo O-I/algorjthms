@@ -478,3 +478,10 @@
 (defn a-longest [cards]
   (let [piles (reduce place '() cards)]
     (->> piles last first reverse)))
+
+(defn lgc-iterator [a b]
+  (fn[x] (mod (+ (* a x) b) (bit-shift-left 1 31))))
+
+(def lgc-bsd (drop 1 (iterate (lgc-iterator 1103515245 12345) 0)))
+
+(def lgc-ms (drop 1 (for [x (iterate  (lgc-iterator 214013 2531011) 0)] (bit-shift-right x 16))))
